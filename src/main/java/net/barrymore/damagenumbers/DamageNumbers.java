@@ -1,6 +1,7 @@
 package net.barrymore.damagenumbers;
 
 import com.mojang.logging.LogUtils;
+import net.barrymore.damagenumbers.particle.ModParticles;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -15,10 +16,11 @@ import org.slf4j.Logger;
 @Mod(DamageNumbers.MOD_ID)
 public class DamageNumbers {
     public static final String MOD_ID = "damagenumbers";
-    private static final Logger LOGGER = LogUtils.getLogger();
 
     public DamageNumbers() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModParticles.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
